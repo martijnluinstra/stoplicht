@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="mobileoptimized" content="0" />
+    <title>Stoplicht!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <a href="#" class="light" data-colour="#f00" data-colour-dark="#422" id="red"></a>
+            <a href="#" class="light" data-colour="#f90" data-colour-dark="#432" id="yellow"></a>
+            <a href="#" class="light" data-colour="#0f0" data-colour-dark="#242" id="green"></a>
+        </div>
+        <div class="footer">
+            <div class="info">
+                <a href="http://martijnluinstra.nl/">Martijn Luinstra</a>
+            </div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+
+    updateSize();
+
+    $('.light').each(function() {
+        $(this).css('background-color', $(this).data('colour-dark'));
+    });
+    
+    $('#green').css('background-color', $('#green').data('colour'));
+    
+    $('.light').click(function() {
+        $('.light').each(function() {
+            $(this).css('background-color', $(this).data('colour-dark'));
+        });
+        // $('.light').css('background-color', '#777');
+        $(this).css('background-color', $(this).data('colour'));
+    });
+
+    $(window).resize(function(){ 
+        updateSize(); 
+    });
+
+    /*
+     * Why does this work?
+     * 
+     * LIGHT:
+     * height = width = unit * 2
+     * margin-bottom  = unit / 2
+     *
+     * BOX:
+     * padding        = unit 
+     * border         = unit * 0.3
+     * border-radius  = border * 2
+     * innerHeight    = 3 * light + 2 * light.margin-bottom + 2 * padding
+     * innerWidth     = light + 2 * padding
+     */
+
+    function updateSize(){
+        var unit,
+            totalWidth = $(window).width()-50,
+            totalHeight = $(window).height()-50;
+
+        if ((totalHeight/totalWidth) < (2)){ /* relative sizes are 10/5 */
+            unit = (totalHeight/9.6);
+        } else{
+            unit = (totalWidth/4.6);
+        }
+
+        $('.box').css({'padding': unit + 'px', 'borderRadius': unit * 0.6 + 'px', 'border-width': unit * 0.3 + 'px'});
+        $('.light').css('margin-bottom', unit / 2 + 'px');
+        $('.box').innerHeight(unit * 9).innerWidth(unit * 4);
+        $('.light').height(unit * 2).width(unit * 2);
+    }
+
+    </script>
+</body>
+</html>

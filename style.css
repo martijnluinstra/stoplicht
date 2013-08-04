@@ -1,0 +1,86 @@
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: #ddd; 
+    color:black;
+    font: 14px Verdana, sans-serif;
+}
+
+.container {
+    height: 100%;
+    padding: 25px;
+    text-align: center;
+}
+
+/*
+ * unit = 50px
+ *
+ * LIGHT:
+ * height = width = unit * 2
+ * margin-bottom  = unit / 2
+ *
+ * BOX:
+ * padding        = unit                                      
+ * height         = unit * 7    = 3 * light + 2 * light.margin-bottom
+ * width          = unit * 2    = light                        
+ * border         = unit * 0.3
+ * border-radius  = unit * 0.6  = border * 2                   
+ * totalHeight    = unit * 9.6  = height + padding + border    
+ * totalWidth     = unit * 4.6  = width + padding + border     
+ */
+
+.box {
+    display: block;
+    margin: 0 auto;
+    padding: 50px;
+    height: 350px;
+    width: 100px;
+    border: 15px solid white;
+    border-radius: 30px;
+    background-color: black;
+}
+
+.light{
+    display: block;
+    margin-bottom: 25px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: #777;
+    cursor: pointer;
+}
+
+/* Info*/
+
+.footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    color: #999;
+    text-align: center;
+}
+
+.info{
+    float: right;
+    font-size: 10px;
+    margin-top: 10px;
+    line-height: 10px
+}
+
+a,
+a:visited{
+    color: #999;
+}
+
+a:hover{
+    color: #666;
+}
